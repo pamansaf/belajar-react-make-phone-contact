@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply py-1 px-4 bg-indigo-500 text-white rounded-md hover:bg-indigo-600;
+}
+
+.btn-edit {
+  @apply text-sm py-1 px-3 bg-indigo-500 text-white rounded hover:bg-indigo-600;
+}
+.btn-del {
+  @apply text-sm py-1 px-3 bg-red-400 text-white rounded hover:bg-red-500;
+}
+
+.nav-link {
+  @apply py-1 px-3 hover:text-white rounded-md hover:bg-indigo-500;
+}
