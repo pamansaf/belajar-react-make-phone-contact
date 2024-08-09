@@ -1,4 +1,12 @@
-const ContactList = ({ contacts, title, onDelete }) => {
+import Api from "../api/contactApi";
+
+const ContactList = ({ contacts, setContacts, title, onDelete }) => {
+  const handleDeletecontact = (id) => {
+    Api.delete("http://localhost:3000/contacts/" + id).then(() => {
+      onDelete(id);
+    });
+  };
+
   return (
     <div className="py-4">
       <h3 className="font-bold text-indigo-500 text-lg pb-3 ">{title}</h3>
@@ -13,7 +21,10 @@ const ContactList = ({ contacts, title, onDelete }) => {
           </div>
           <div className="flex gap-2">
             <button className="btn-edit">Edit</button>
-            <button onClick={() => onDelete(contact.id)} className="btn-del">
+            <button
+              onClick={() => handleDeletecontact(contact.id)}
+              className="btn-del"
+            >
               Delete
             </button>
           </div>

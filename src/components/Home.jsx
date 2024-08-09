@@ -1,64 +1,43 @@
 import React, { useState, useEffect } from "react";
+import Api from "../api/contactApi";
 import Navbar from "./Navbar";
 import ContactList from "./ContactList";
+
 export default function Home() {
-  const [contacts, setContacts] = useState([
-    {
-      id: 1,
-      name: "Ahmad",
-      phone: "081234567890",
-    },
-    {
-      id: 2,
-      name: "Safwan",
-      phone: "081234567890",
-    },
-    {
-      id: 3,
-      name: "Siti",
-      phone: "081234567890",
-    },
-    {
-      id: 4,
-      name: "Aisyah",
-      phone: "081234567890",
-    },
-  ]);
-
-  const [blockContacts, setBlockContas] = useState([
-    {
-      id: 4,
-      name: "Aisyah",
-      phone: "081234567890",
-    },
-  ]);
-
-  const handleDelete = (id) => {
-    const filteredContacts = contacts.filter((contact) => contact.id !== id);
-    setContacts(filteredContacts);
+  const fecthContact = () => {
+    Api.get("http://localhost:3000/contacts")
+      .then((res) => {
+        setContacts(res.data);
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  console.log("component di rendered");
+  const [contacts, setContacts] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("useeffect is called");
+    fecthContact();
   }, []);
 
   return (
     <div className="w-1/2 min-h-screen mx-auto">
       <Navbar />
-      <ContactList
-        contacts={contacts}
-        title="All Contacts"
-        onDelete={handleDelete}
-        setContacts={setContacts}
-      />
-      <ContactList
-        contacts={blockContacts}
-        title="Block Contacts"
-        onDelete={handleDelete}
-        setContacts={setContacts}
-      />
+      {loading && <div className="pt-5">Loading...</div>}
+      {error && <div className="pt-5 text-red-500">{error}</div>}
+      {contacts && (
+        <ContactList
+          contacts={contacts}
+          title="All Contacts"
+          onDelete={fecthContact}
+          setContacts={setContacts}
+        />
+      )}
     </div>
   );
 }
