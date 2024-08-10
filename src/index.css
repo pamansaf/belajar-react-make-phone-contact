@@ -2,17 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-color {
+  @apply text-indigo-700;
+}
+
 .btn {
-  @apply py-1 px-4 bg-indigo-500 text-white rounded-md hover:bg-indigo-600;
+  @apply py-1 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700;
 }
 
 .btn-edit {
-  @apply text-sm py-1 px-3 bg-indigo-500 text-white rounded hover:bg-indigo-600;
+  @apply text-sm py-1 px-3 bg-indigo-600 text-white rounded hover:bg-indigo-700;
 }
 .btn-del {
-  @apply text-sm py-1 px-3 bg-red-400 text-white rounded hover:bg-red-500;
+  @apply text-sm py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600;
+}
+.btn-submit {
+  @apply text-sm py-1 px-3 bg-indigo-600 text-white rounded hover:bg-indigo-700;
+}
+.btn-cancel {
+  @apply text-sm py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600;
 }
 
 .nav-link {
-  @apply py-1 px-3 hover:text-white rounded-md hover:bg-indigo-500;
+  @apply py-1 px-3 hover:text-white rounded-md hover:bg-indigo-600;
 }

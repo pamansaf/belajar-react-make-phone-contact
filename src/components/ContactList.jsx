@@ -9,7 +9,7 @@ const ContactList = ({ contacts, setContacts, title, onDelete }) => {
 
   return (
     <div className="py-4">
-      <h3 className="font-bold text-indigo-500 text-lg pb-3 ">{title}</h3>
+      <h3 className="font-bold text-color text-lg pb-3 ">{title}</h3>
       {contacts.map((contact) => (
         <div
           key={contact.id}
