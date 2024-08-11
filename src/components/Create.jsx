@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Api from "../api/contactApi";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Create() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (id) {
+      Api.get("http://localhost:3000/contacts/" + id).then((res) => {
+        const { data } = res;
+        setName(data.name);
+        setPhone(data.phone);
+      });
+    }
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

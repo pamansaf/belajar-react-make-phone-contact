@@ -1,4 +1,5 @@
 import Api from "../api/contactApi";
+import { Link } from "react-router-dom";
 
 const ContactList = ({ contacts, setContacts, title, onDelete }) => {
   const handleDeletecontact = (id) => {
@@ -20,7 +21,9 @@ const ContactList = ({ contacts, setContacts, title, onDelete }) => {
             <p>Phone : {contact.phone}</p>
           </div>
           <div className="flex gap-2">
-            <button className="btn-edit">Edit</button>
+            <Link to={"/edit/" + contact.id}>
+              <button className="btn-edit">Edit</button>
+            </Link>
             <button
               onClick={() => handleDeletecontact(contact.id)}
               className="btn-del"
