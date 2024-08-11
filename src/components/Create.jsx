@@ -1,13 +1,22 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
+import Api from "../api/contactApi";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
 export default function Create() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const contact = { name, phone };
-    console.log(contact);
+
+    setLoading(true);
+    Api.post("http://localhost:3000/contacts/", contact).then(() => {
+      setLoading(false);
+    });
   };
 
   return (
@@ -46,8 +55,12 @@ export default function Create() {
           </div>
 
           <div className="flex gap-2">
-            <button className="btn-cancel">Cancel</button>
-            <button className="btn-submit">Submit</button>
+            <Link to={"/"} className="btn-cancel">
+              Cancel
+            </Link>
+            <button onClick={() => navigate(-1)} className="btn-submit">
+              {loading ? "Submiting..." : "Submit"}
+            </button>
           </div>
         </form>
       </div>
