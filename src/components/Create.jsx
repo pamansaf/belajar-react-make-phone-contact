@@ -25,7 +25,21 @@ export default function Create() {
     const contact = { name, phone };
 
     setLoading(true);
-    Api.post("http://localhost:3000/contacts/", contact).then(() => {
+    if (id) {
+      updateContact(contact);
+    } else {
+      createContact(contact);
+    }
+  };
+
+  const createContact = (contact) => {
+    Api.post("http://localhost:3000/contacts", contact).then(() => {
+      setLoading(false);
+    });
+  };
+
+  const updateContact = (contact) => {
+    Api.put("http://localhost:3000/contacts/" + id, contact).then(() => {
       setLoading(false);
     });
   };
@@ -34,7 +48,9 @@ export default function Create() {
     <div className="w-1/2 min-h-screen mx-auto">
       <Navbar />
       <div>
-        <h3 className="font-bold text-color text-lg py-4">Contact Form</h3>
+        <h3 className="font-bold text-color text-lg py-4">
+          {id ? "Update" : "Add"} Contact
+        </h3>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-semibold">
