@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Create from "./components/Create.jsx";
 import LearnReact from "./components/LearnReact.jsx";
+import FormikForm from "./components/FormikForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/edit/:id",
     element: <Create />,
+  },
+  {
+    path: "/formik-form",
+    element: <FormikForm />,
   },
 ]);
 

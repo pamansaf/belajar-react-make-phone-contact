@@ -22,6 +22,9 @@
 .btn-cancel {
   @apply text-sm py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600;
 }
+.btn-register {
+  @apply font-semibold py-1 px-3 bg-indigo-600 text-white rounded hover:bg-indigo-700;
+}
 
 /* .nav-link {
   @apply py-1 px-3 hover:text-white rounded-md hover:bg-indigo-600;

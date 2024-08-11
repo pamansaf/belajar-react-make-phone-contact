@@ -7,11 +7,14 @@ export default function Navbar() {
         <NavLink to="/" ativeclassname="active">
           Home
         </NavLink>
-        <NavLink to="/react" activeclassname="active">
-          Learn React
-        </NavLink>
         <NavLink to="/create" activeclassname="active">
           New Contact
+        </NavLink>
+        <NavLink to="/react" activeclassname="active">
+          React
+        </NavLink>
+        <NavLink to="/formik-form" activeclassname="active">
+          Form Validation
         </NavLink>
       </div>
     </nav>
