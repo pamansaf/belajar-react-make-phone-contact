@@ -23,6 +23,10 @@
   @apply text-sm py-1 px-3 bg-red-500 text-white rounded hover:bg-red-600;
 }
 
-.nav-link {
+/* .nav-link {
   @apply py-1 px-3 hover:text-white rounded-md hover:bg-indigo-600;
+} */
+
+.active {
+  @apply py-1 px-3 text-white rounded-md bg-indigo-600;
 }
